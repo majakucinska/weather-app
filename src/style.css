@@ -1,0 +1,97 @@
+.background {
+  font-family: "Montserrat", sans-serif;
+  max-width: 80%;
+  margin: 20px auto;
+  padding: 20px 100px;
+  max-height: after;
+  border: 2px solid #c4c1e0;
+  box-shadow: 8px 8px 6px #c4c1e0;
+  border-radius: 10px;
+  text-align: center;
+  color: #3e4a61;
+}
+.form-control {
+  border: solid #5a6275;
+  border-radius: 5px;
+}
+.btn {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #006ec5;
+  margin: 0 auto;
+}
+.locationBtn {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 13.5px;
+  background-color: #aaaaaa;
+  border-color: #aaaaaa;
+  margin: 0 auto;
+  padding: 6px 0px 6px 0px;
+}
+
+h1 {
+  border-radius: 25px;
+  border: 5px solid #006ec5;
+  width: 400px;
+  padding: 10px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  color: #006ec5;
+}
+.parameters {
+  font-size: 18px;
+  line-height: 40px;
+  text-align: left;
+}
+#today-temperature {
+  text-align: center;
+  font-size: 32px;
+  color: #006ec5;
+  font-weight: 800;
+}
+
+hr {
+  border: 3px solid black;
+}
+.next-days {
+  display: block;
+  padding: 10px;
+  border: 2px solid #5a6275;
+  border-radius: 4px;
+  margin: 20px auto;
+  max-width: 80%;
+}
+img {
+  display: block;
+  margin: 0px auto;
+}
+.units {
+  font-size: medium;
+  vertical-align: super;
+}
+#celcius-units {
+  text-decoration: none;
+  font-weight: bold;
+}
+#celcius-units:hover {
+  text-decoration: underline;
+}
+#fahrenheit-units {
+  text-decoration: none;
+  font-weight: bold;
+}
+#fahrenheit-units:hover {
+  text-decoration: underline;
+}
+.link {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
