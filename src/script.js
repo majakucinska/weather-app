@@ -86,12 +86,16 @@ function showFahrenheit(event) {
   event.preventDefault();
   let temperatureInFahrenheit = document.querySelector("#today-temperature");
   temperatureInFahrenheit.innerHTML = Math.round(globalTemp * 1.8 + 32);
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
 }
 
 function showCelcius(event) {
   event.preventDefault();
   let temperatureInCelcius = document.querySelector("#today-temperature");
   temperatureInCelcius.innerHTML = globalTemp;
+  celcius.classList.add("active");
+  fahrenheit.classList.remove("active");
 }
 
 let form = document.querySelector("#main-form");
