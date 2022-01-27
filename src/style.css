@@ -86,6 +86,25 @@ img {
   font-weight: bold;
 }
 
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+}
+
+.weather-forecast-temperatures {
+  font-size: 16 px;
+  opacity: 0.7;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.6;
+}
+
 .link {
   display: flex;
   justify-content: center;

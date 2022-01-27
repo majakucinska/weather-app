@@ -31,6 +31,13 @@ currentDate.innerHTML = `${day}, ${month} ${date}, ${year}, ${hours}:${minutes}`
 
 let globalTemp;
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "e4ead19c017d9f64a022f432f2068c11";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
+}
+
 function showTemperature(response) {
   let currentTemperature = Math.round(response.data.main.temp);
   let temperatureInCelcius = document.querySelector("#today-temperature");
@@ -48,7 +55,8 @@ function showTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  console.log(response);
+
+  getForecast(response.data.coord);
 }
 
 function handleSubmit(event) {
@@ -96,6 +104,49 @@ function showCelcius(event) {
   temperatureInCelcius.innerHTML = globalTemp;
   celcius.classList.add("active");
   fahrenheit.classList.remove("active");
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `      <div class="col-2">
+              <div class="weather-forecast-date">
+                ${formatDay(forecastDay.dt)}
+              </div>
+              <img src= "http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png";
+              alt = " "
+              width ="42"
+              />
+              <div class="weather-forecast-temperatures">
+                <span class="weather-forecast-temperature-max">${Math.round(
+                  forecastDay.temp.max
+                )}&deg</span>
+                <span class="weather-forecast-temperature-min">${Math.round(
+                  forecastDay.temp.min
+                )}&deg</span>
+              </div>
+            </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
 
 let form = document.querySelector("#main-form");
