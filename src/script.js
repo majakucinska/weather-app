@@ -27,9 +27,8 @@ let months = [
 ];
 let month = months[now.getMonth()];
 let currentDate = document.querySelector("h2");
-currentDate.innerHTML = `${day}, ${month} ${date}, ${year}, ${hours}:${minutes}`;
-
-let globalTemp;
+currentDate.innerHTML = `${day}, ${month} ${date}, ${year} <br />
+${hours}:${minutes}`;
 
 function getForecast(coordinates) {
   console.log(coordinates);
@@ -47,7 +46,6 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#weatherIcon");
 
   temperatureInCelcius.innerHTML = currentTemperature;
-  globalTemp = currentTemperature;
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   humidityElement.innerHTML = response.data.main.humidity;
   weatherDescription.innerHTML = response.data.weather[0].description;
@@ -88,22 +86,6 @@ function showPosition(position) {
 function showCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-function showFahrenheit(event) {
-  event.preventDefault();
-  let temperatureInFahrenheit = document.querySelector("#today-temperature");
-  temperatureInFahrenheit.innerHTML = Math.round(globalTemp * 1.8 + 32);
-  celcius.classList.remove("active");
-  fahrenheit.classList.add("active");
-}
-
-function showCelcius(event) {
-  event.preventDefault();
-  let temperatureInCelcius = document.querySelector("#today-temperature");
-  temperatureInCelcius.innerHTML = globalTemp;
-  celcius.classList.add("active");
-  fahrenheit.classList.remove("active");
 }
 
 function displayForecast(response) {
@@ -151,12 +133,6 @@ function formatDay(timestamp) {
 
 let form = document.querySelector("#main-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheit = document.querySelector("#fahrenheit-units");
-fahrenheit.addEventListener("click", showFahrenheit);
-
-let celcius = document.querySelector("#celcius-units");
-celcius.addEventListener("click", showCelcius);
 
 let currentLocation = document.querySelector("#locationButton");
 currentLocation.addEventListener("click", showCurrentLocation);
